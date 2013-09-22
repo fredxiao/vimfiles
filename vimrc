@@ -68,14 +68,14 @@ elseif MySys() == 'windows'
     set helplang=cn
     "Fast reloading of the _vimrc
     "map <silent> <leader>ss :source ~/_vimrc<cr>
-    map <silent> <leader>ss :source $VIM\_vimrc<cr>
+    map <silent> <leader>ss :source $VIM\vimfiles\vimrc<cr>
     "Fast editing of _vimrc
     "map <silent> <leader>ee :call SwitchToBuf("~/_vimrc")<cr>
     nmap <silent> <leader>ev :e $MYVIMRC<CR>
     "nmap <silent> <leader>ev :e $MYVIMRC<CR>
     "When _vimrc is edited, reload it
     "autocmd! bufwritepost _vimrc source ~/_vimrc
-    autocmd! bufwritepost _vimrc source $VIM\_vimrc
+    autocmd! bufwritepost _vimrc source $VIM\vimfiles\vimrc
 endif
 
 " For windows version
