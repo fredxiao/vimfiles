@@ -1,17 +1,72 @@
-"Start fred's personal configuration from here
-"Author:Fred
-"Date:2012.07.09
-"----------------------------------------------------------
+" https://github.com/fredxiao/vimfiles
+" ============================================================================
+" Author:Fred
+" Date:2013.09.22
+" ============================================================================
+"
+"
+" ============================================================================
+" Plugins included
+" ============================================================================
+" Pathogen
+" Better Management of VIM plugins
+"
+" Fugitive
+" Interface with git from vim
+"
+"
+"
+"
+" ============================================================================
+" Shortcuts
+" ============================================================================
+" Use Vim settings, rather then Vi settings (much better!).
+" This must be first, because it changes other options as a side effect.
+set nocompatible     
 
-"Use pathogen to easily modify the runtime path to include all
-"plugins under the ~/.vim/bundle directory
+" Define mapleader key is ',',default one is '\'
+let mapleader = ","
+let g:mapleader = ","
+
+" Fast edit vimrc file
+nmap <silent> <leader>ev :e $MYVIMRC<CR>
+
+" Easy window navigations
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
+" Clear highlighted searches
+nmap <silent> ,. :nohlsearch<CR>
+
+
+" 'F2'to open/close GUI toolbar and menu
+map <silent> <F2> :if &guioptions =~# 'T' <Bar>
+        \set guioptions-=T <Bar>
+        \set guioptions-=m <bar>
+    \else <Bar>
+        \set guioptions+=T <Bar>
+        \set guioptions+=m <Bar>
+    \endif<CR>
+
+" NERD Tree
+map <F5> :NERDTreeToggle<CR>
+imap <F5> <ESC>:NERDTreeToggle<CR>
+
+" ==========================================================
+" Pathogen - Allows us to organize our vim plugins
+" ==========================================================
+" Use pathogen to easily modify the runtime path to include all
+" plugins under the ~/.vim/bundle directory
+filetype off
+call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
-call pathogen#runtime_append_all_bundles()                  
 
-"use Vim settings, rather then Vi settings (much better!).
-"this must be first, because it changes other options as a side effect.
-set nocompatible                        
-
+" ============================================================================
+" Basic Settings
+" ============================================================================
+"""Display on different OS
 " define platform function MySys()
 function! MySys()
   if has("gui_win32")
@@ -48,7 +103,7 @@ endfunction
 "        endif
 "    endfunction
 
-"Fass edit vimrs
+" Fass edit vimrs
 if MySys() == 'linux'
     "Fast reloading of the .vimrc
     map <silent> <leader>ss :source ~/.vimrc<cr>
@@ -98,7 +153,7 @@ if MySys() == 'windows'
 
 endif
 
-"GUI font and color
+" GUI font and color
 if has("gui_running")
 	    if has("gui_gtk2")
 		:set guifont=Inconsolata-dz\ Medium\ 12
@@ -114,24 +169,76 @@ if has("gui_running")
 	    endif
 	endif
 
-filetype on                             "
-syntax enable                           "
-syntax on
-filetype plugin on
 
-set number                              "show line number
+syntax on " syntax highlighing
+filetype on " try to detect filetypes
+filetype plugin indent on " enable loading indent file for filetype
+set number " Display line numbers
+set numberwidth=1 " using only 1 column (and 1 space) while possible
 set ruler                               "
-set nobackup                            "cancel auto backup
-set noswapfile                          "cancel swapfile
-set hlsearch                            "highlight search terms
-set incsearch                           "show search matches as you type
+set title " show title in console title bar
+set wildmenu " Menu completion in command mode on <Tab>
+set wildmode=full " <Tab> cycles between all matching choices.
+
+""" Moving Around/Editing
+set cursorline " have a line indicate the cursor location
+set ruler " show the cursor position all the time
+set nostartofline " Avoid moving cursor to BOL when jumping around
+set virtualedit=block " Let cursor move past the last char in <C-v> mode
+set scrolloff=3 " Keep 3 context lines above and below the cursor
+set backspace=2 " Allow backspacing over autoindent, EOL, and BOL
+set showmatch " Briefly jump to a paren once it's balanced
+set nowrap " don't wrap text
+set linebreak " don't wrap textin the middle of a word
+set autoindent " always set autoindenting on
+set smartindent " use smart indent if there is no indent file
+set tabstop=4 " <tab> inserts 4 spaces
+set shiftwidth=4 " but an indent level is 2 spaces wide.
+set softtabstop=4 " <BS> over an autoindent deletes both spaces.
+set expandtab " Use spaces, not tabs, for autoindent/tab key.
+set shiftround " rounds indent to a multiple of shiftwidth
+set matchpairs+=<:> " show matching <> (html mainly) as well
+set foldmethod=indent " allow us to fold on indents
+set foldlevel=99 " don't fold by default
+
+""" Searching and Patterns
+set ignorecase smartcase " when serching,is all 'a',ignore diff 'a'&'A'
+                         " if key any 'A',must consider the diff 'a'&'A'.
+                         " simple idea, great achievement!
 set smarttab
-set tabstop=4                           "
-set softtabstop=4
-set shiftwidth=4                        "
-set expandtab
-set autoindent                          "
-set smartindent                         "
+set hlsearch " highlight search terms
+set incsearch " show search matches as you type
+
+""" Status Line 
+set laststatus=1
+set statusline=                       
+set statusline+=[%Y                     "file type
+set statusline+=/%{&encoding}           "encoding
+set statusline+=/%{&fileformat}]        "file format
+set statusline+=\ \ \%<%F%h%m%r%=%b
+set statusline+=\ \0x%B                 "char hex value
+set statusline+=\ \ \%=%-10.(%l,%c%V%)
+set statusline+=\ %p%%/%L               "% of total rows/total rows
+
+"set statusline=
+"set statusline=\ %{HasPaste()}%<%-15.25(%f%)%m%r%h\%w\\
+"set statusline+=\ \ \ %<%20.30(%{hostname()}:%{CurDir()}%)\%f
+"set statusline=%({CurDir()}%)\%f           "current dir
+"set statusline+=%2*%-3.3n%0* " buffer number
+"set statusline+=%h%1*%m%r%w%0* " flag
+"set statusline+=%= " right align
+"set statusline+=%2*0x%-8B " current char
+
+
+set nobackup " cancel auto backup
+set noswapfile " cancel swapfile
+
+
+
+
+
+
+
 set showcmd                             "show incomplete cmds down the bottom
 set showmode                            "show current mode down the bottom
 set showmatch                           "
@@ -139,13 +246,10 @@ set history=1000                        "remember more commands and search histo
 set undolevels=1000                     "use many muchos levels of undo
 "set wrap                                "auto wrap lines
 set equalalways                         "when split window,keep the same width/height
-set wildmenu                            "
 set clipboard=unnamed                   "yank to the system register (*) by default
 
-"when serching,is all 'a',ignore diff 'a'&'A'
-"if key any 'A',must consider the diff 'a'&'A' 
-"simple idea, great achievement!
-set ignorecase smartcase
+
+
 
 
 "auto wrap lines by 100 english words/50 chinese words
@@ -180,21 +284,8 @@ set guioptions-=T                       "'+'/'-"keep/remove GUI toolbar
 set guioptions-=r                       "'+'/'-"keep/remove GUI right scrollbar
 set guioptions-=L                       "'+'/'-"keep/remove GUI left scrollbar
 
-"'F2'to open/close GUI toolbar and menu
-map <silent> <F2> :if &guioptions =~# 'T' <Bar>
-        \set guioptions-=T <Bar>
-        \set guioptions-=m <bar>
-    \else <Bar>
-        \set guioptions+=T <Bar>
-        \set guioptions+=m <Bar>
-    \endif<CR>
 
-"define mapleader key is ',',default one is '\'
-let mapleader = ","
-let g:mapleader = ","
 
-"fast edit vimrc file
-nmap <silent> <leader>ev :e $MYVIMRC<CR>
 
 "Ê¹ÓÃ¿ÕžñŒüÀŽ¿ª¹ØÕÛµþ
 set foldenable                          "fdmÊÇfoldmethodÃüÁîµÄŒò»¯
@@ -202,25 +293,7 @@ set foldenable                          "fdmÊÇfoldmethodÃüÁîµÄŒò»¯
 nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 
 
-"status line 
-set laststatus=1
-set statusline=                       
-set statusline+=[%Y                     "file type
-set statusline+=/%{&encoding}           "encoding
-set statusline+=/%{&fileformat}]        "file format
-set statusline+=\ \ \%<%F%h%m%r%=%b
-set statusline+=\ \0x%B                 "char hex value
-set statusline+=\ \ \%=%-10.(%l,%c%V%)
-set statusline+=\ %p%%/%L               "% of total rows/total rows
 
-"set statusline=
-"set statusline=\ %{HasPaste()}%<%-15.25(%f%)%m%r%h\%w\\
-"set statusline+=\ \ \ %<%20.30(%{hostname()}:%{CurDir()}%)\%f
-"set statusline=%({CurDir()}%)\%f           "current dir
-"set statusline+=%2*%-3.3n%0* " buffer number
-"set statusline+=%h%1*%m%r%w%0* " flag
-"set statusline+=%= " right align
-"set statusline+=%2*0x%-8B " current char
 
 
 function! CurDir()
@@ -237,38 +310,25 @@ function! HasPaste()
 endfunction
 
 
-"Easy window navigations
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
-
-"clear highlighted searches
-nmap <silent> ,. :nohlsearch<CR>
-
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"PLUGIN SETTINGS
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"MiniBufExplorer
+" ============================================================================
+" Plug-in Settings
+" ============================================================================
+" MiniBufExplorer
 let g:miniBufExplMapCTabSwitchBufs=1    "<C-Tab> to switch tabs
 let g:miniBufExplMapWindowsNavVim=1     "<C-h,j,k,l> to switch windows
 let g:miniBufExplMapWindowNavArrows=1   "<C-arrow key> to switch windows
 let g:miniBufExplModSelTarget=0         "Modifiable Select Target
 "let g:miniBufExplorerMoreThanOne=0     "to solve multi windows issue
 
-"NERD Tree
-map <F5> :NERDTreeToggle<CR>
-imap <F5> <ESC>:NERDTreeToggle<CR>
+" NERD Tree
+
 let NERDTreeShowBookmarks=1             "show bookmark
 let NERDChristmasTree=1                 "beautifull tree
 let NERDTreeShowLineNumbers=1           "show line numbers
 let NERDTreeWinPos="right"              "set window position
 let NERDTreeWinSize=25                  "set window width
 
-"Yankring
+" Yankring
 nnoremap <silent> <F3> :YRShow<cr>
 inoremap <silent> <F3> <ESC>:YRShow<cr>
 
@@ -276,8 +336,8 @@ inoremap <silent> <F3> <ESC>:YRShow<cr>
 let g:indent_guides_guide_size=1        "<mapleader>ig to use it
 
 
-"TagList
+" TagList
 let Tlist_Show_One_File=1
 let Tlist_Exit_OnlyWindow=1
 "tags
-set tags=e:\Dropbox\Src\ODMTestAutomation_novss\release\
+"set tags=e:\Dropbox\Src\ODMTestAutomation_novss\release\
