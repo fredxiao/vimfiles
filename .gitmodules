@@ -25,3 +25,6 @@
 [submodule "bundle/MiniBufExpl"]
 	path = bundle/MiniBufExpl
 	url = https://github.com/techlivezheng/vim-plugin-minibufexpl.git
+[submodule "bundle/pydoc"]
+	path = bundle/pydoc
+	url = https://github.com/fs111/pydoc.vim.git

@@ -13,6 +13,17 @@
 " Pathogen
 " Better Management of VIM plugins
 "
+" NERD Tree
+"
+"
+" PyFlakes
+" Underlines and displays errors with Python on-the-fly
+"
+" Pytest
+" Runs your Python tests in Vim.
+"
+" Matchit
+"
 " Fugitive
 " Interface with git from vim
 "
