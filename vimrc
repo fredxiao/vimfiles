@@ -52,8 +52,8 @@ map <silent> <F2> :if &guioptions =~# 'T' <Bar>
     \endif<CR>
 
 " NERD Tree
-map <F5> :NERDTreeToggle<CR>
-imap <F5> <ESC>:NERDTreeToggle<CR>
+map <F6> :NERDTreeToggle<CR>
+imap <F6> <ESC>:NERDTreeToggle<CR>
 
 " ==========================================================
 " Pathogen - Allows us to organize our vim plugins
