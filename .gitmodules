@@ -7,3 +7,6 @@
 [submodule "bundle/pyflakes"]
 	path = bundle/pyflakes
 	url = https://github.com/MiCHiLU/pyflakes-vim.git
+[submodule "bundle/YankRing"]
+	path = bundle/YankRing
+	url = https://github.com/vim-scripts/YankRing.vim.git
