@@ -56,6 +56,7 @@ nmap <silent> ,. :nohlsearch<CR>
 
 " <leader>8 to Run PEP 8 compliant test
 let g:pep8_map='<leader>8'
+#let g:pyflakes_use_quickfix = 0 " Don't show it in quickfix window
 
 " F2 to open/close GUI toolbar and menu
 map <silent> <F2> :if &guioptions =~# 'T' <Bar>
