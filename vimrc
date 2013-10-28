@@ -21,10 +21,15 @@
 " PyFlakes
 " Underlines and displays errors with Python on-the-fly
 "
+" Task List
+"
+" Matchit
+"
+"
 " TODO(Fred):Pytest
 " Runs your Python tests in Vim.
 "
-" Matchit
+" TODO(Fred):Command-T
 "
 " TODO(Fred)Fugitive
 " Interface with git from vim
@@ -56,7 +61,10 @@ nmap <silent> ,. :nohlsearch<CR>
 
 " <leader>8 to Run PEP 8 compliant test
 let g:pep8_map='<leader>8'
-#let g:pyflakes_use_quickfix = 0 " Don't show it in quickfix window
+"let g:pyflakes_use_quickfix = 0 " Don't show it in quickfix window
+
+" <leader>td to run Task List
+map <leader>td <Plug>TaskList
 
 " F2 to open/close GUI toolbar and menu
 map <silent> <F2> :if &guioptions =~# 'T' <Bar>
