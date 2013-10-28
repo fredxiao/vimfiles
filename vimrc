@@ -1,7 +1,7 @@
 " https://github.com/fredxiao/vimfiles
 " ============================================================================
 " Author:Fred
-" Date:2013.09.22
+" Date:2013.10.28
 " ============================================================================
 "
 "
@@ -15,16 +15,18 @@
 "
 " NERD Tree
 "
+" Pep8
+" Check the code whether is pep-8 compliant
 "
 " PyFlakes
 " Underlines and displays errors with Python on-the-fly
 "
-" Pytest
+" TODO(Fred):Pytest
 " Runs your Python tests in Vim.
 "
 " Matchit
 "
-" Fugitive
+" TODO(Fred)Fugitive
 " Interface with git from vim
 "
 "
@@ -40,7 +42,7 @@ set nocompatible
 let mapleader = ","
 let g:mapleader = ","
 
-" Fast edit vimrc file
+" <leader>ev to fast edit vimrc file,default is F5
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 
 " Easy window navigations
@@ -49,11 +51,13 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
-" Clear highlighted searches
+" <leader>. to clear highlighted searches
 nmap <silent> ,. :nohlsearch<CR>
 
+" <leader>8 to Run PEP 8 compliant test
+let g:pep8_map='<leader>8'
 
-" 'F2'to open/close GUI toolbar and menu
+" F2 to open/close GUI toolbar and menu
 map <silent> <F2> :if &guioptions =~# 'T' <Bar>
         \set guioptions-=T <Bar>
         \set guioptions-=m <bar>
@@ -62,11 +66,10 @@ map <silent> <F2> :if &guioptions =~# 'T' <Bar>
         \set guioptions+=m <Bar>
     \endif<CR>
 
-" Run python codes
+" F10 to run python codes
 map <F10> :!python.exe %<CR>
 
-
-" NERD Tree
+" F6 to toggle NERD Tree
 map <F6> :NERDTreeToggle<CR>
 imap <F6> <ESC>:NERDTreeToggle<CR>
 
