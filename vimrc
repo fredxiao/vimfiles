@@ -62,6 +62,10 @@ map <silent> <F2> :if &guioptions =~# 'T' <Bar>
         \set guioptions+=m <Bar>
     \endif<CR>
 
+" Run python codes
+map <F10> :!python.exe %<CR>
+
+
 " NERD Tree
 map <F6> :NERDTreeToggle<CR>
 imap <F6> <ESC>:NERDTreeToggle<CR>
