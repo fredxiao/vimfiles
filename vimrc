@@ -66,21 +66,26 @@ let g:pep8_map='<leader>8'
 " <leader>td to run Task List
 map <leader>td <Plug>TaskList
 
-" F2 to open/close GUI toolbar and menu
-map <silent> <F2> :if &guioptions =~# 'T' <Bar>
+
+
+" F6 to toggle NERD Tree
+map <F6> :NERDTreeToggle<CR>
+imap <F6> <ESC>:NERDTreeToggle<CR>
+
+" F7 to toggle TagList
+nnoremap <silent> <F7> :TlistToggle<CR>
+
+" F10 to run python codes
+map <F10> :!python.exe %<CR>
+
+" F12 to open/close GUI toolbar and menu
+map <silent> <F12> :if &guioptions =~# 'T' <Bar>
         \set guioptions-=T <Bar>
         \set guioptions-=m <bar>
     \else <Bar>
         \set guioptions+=T <Bar>
         \set guioptions+=m <Bar>
     \endif<CR>
-
-" F10 to run python codes
-map <F10> :!python.exe %<CR>
-
-" F6 to toggle NERD Tree
-map <F6> :NERDTreeToggle<CR>
-imap <F6> <ESC>:NERDTreeToggle<CR>
 
 " ==========================================================
 " Pathogen - Allows us to organize our vim plugins
