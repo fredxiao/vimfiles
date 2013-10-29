@@ -25,6 +25,14 @@
 "
 " Matchit
 "
+" Super Tab
+"
+" Tag List and ctags.exe
+"
+" Surround
+"
+" YankRing
+"
 "
 " TODO(Fred):Pytest
 " Runs your Python tests in Vim.
