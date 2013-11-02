@@ -29,6 +29,8 @@
 "
 " Tag List and ctags.exe
 "
+" Rainbow Parentheses
+"
 " Surround
 "
 " YankRing
@@ -382,3 +384,14 @@ let Tlist_Show_One_File=1
 let Tlist_Exit_OnlyWindow=1
 "tags
 "set tags=e:\Dropbox\Src\ODMTestAutomation_novss\release\
+
+
+" Rainbow Parentheses
+let g:rbpt_max = 16
+let g:rbpt_loadcmd_toggle = 0
+
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound " ()
+au Syntax * RainbowParenthesesLoadSquare " []
+au Syntax * RainbowParenthesesLoadBraces " {} 
+au Syntax * RainbowParenthesesLoadChevrons " <>
