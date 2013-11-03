@@ -22,14 +22,20 @@
 " Underlines and displays errors with Python on-the-fly
 "
 " Task List
-"
-" Matchit
+" 追踪TODO项目
 "
 " Super Tab
 "
 " Tag List and ctags.exe
+" 显示程序代码中的对象，配合ctags.exe使用。
+"
+" Tagbar
+" 类Tag List插件
 "
 " Rainbow Parentheses
+" 显示彩虹色的括号
+"
+" Matchit
 "
 " Surround
 "
@@ -82,8 +88,11 @@ map <leader>td <Plug>TaskList
 map <F6> :NERDTreeToggle<CR>
 imap <F6> <ESC>:NERDTreeToggle<CR>
 
-" F7 to toggle TagList
+" F7 to toggle Tag List
 nnoremap <silent> <F7> :TlistToggle<CR>
+
+" F9 to toggle Tagbar
+nnoremap <silent> <F9> :TagbarToggle<CR>
 
 " F10 to run python codes
 map <F10> :!python.exe %<CR>
@@ -192,7 +201,7 @@ if MySys() == 'windows'
     language messages zh_cn.utf-8
 
     "full screen gvim
-    map <F11> <Esc>:call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)<CR>
+    "map <F11> <Esc>:call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)<CR>
 
 endif
 
@@ -363,19 +372,21 @@ let g:miniBufExplMapWindowNavArrows=1   "<C-arrow key> to switch windows
 let g:miniBufExplModSelTarget=0         "Modifiable Select Target
 "let g:miniBufExplorerMoreThanOne=0     "to solve multi windows issue
 
-" NERD Tree
 
+" NERD Tree
 let NERDTreeShowBookmarks=1             "show bookmark
 let NERDChristmasTree=1                 "beautifull tree
 let NERDTreeShowLineNumbers=1           "show line numbers
 let NERDTreeWinPos="right"              "set window position
 let NERDTreeWinSize=25                  "set window width
 
+
 " Yankring
 nnoremap <silent> <F3> :YRShow<cr>
 inoremap <silent> <F3> <ESC>:YRShow<cr>
 
-"Indent Guide"
+
+" Indent Guide"
 let g:indent_guides_guide_size=1        "<mapleader>ig to use it
 
 
@@ -384,6 +395,12 @@ let Tlist_Show_One_File=1
 let Tlist_Exit_OnlyWindow=1
 "tags
 "set tags=e:\Dropbox\Src\ODMTestAutomation_novss\release\
+
+
+" Tagbar
+let g:tagbar_left = 1 "设置tagbar在左边显示
+let g:tagbar_width = 30 " 设置显示宽度 
+let g:tagbar_sort = 0 " 设置按顺序显示，不按名字字母排序
 
 
 " Rainbow Parentheses
