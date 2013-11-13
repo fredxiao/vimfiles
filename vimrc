@@ -25,6 +25,10 @@
 " 追踪TODO项目
 "
 " Super Tab
+" 得到以前输入过的符号列表，并通过tab键循环选择
+"
+" SnipMate
+" 自动补全代码块
 "
 " Tag List and ctags.exe
 " 显示程序代码中的对象，配合ctags.exe使用。
@@ -82,7 +86,9 @@ let g:pep8_map='<leader>8'
 " <leader>td to run Task List
 map <leader>td <Plug>TaskList
 
-
+" F2 or <tab> to trigger snippets,default is <tab>
+ino <F2> <c-r>=TriggerSnippet()<cr>
+snor <F2> <esc>i<right><c-r>=TriggerSnippet()<cr>
 
 " F6 to toggle NERD Tree
 map <F6> :NERDTreeToggle<CR>
